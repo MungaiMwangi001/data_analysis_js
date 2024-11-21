@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scatter Plot</title>
+  <style>
+    canvas {
+      border: 1px solid black;
+    }
+  </style>
+</head>
+<body>
+  <h1>Scatter Plot</h1>
+  <canvas id="myCanvas" width="400" height="400"></canvas>
+  <script>
+    // JavaScript for plotting the scatter plot
+    const canvas = document.getElementById("myCanvas");
+    const ctx = canvas.getContext("2d");
+
+    const xArray = [50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150];
+    const yArray = [7, 8, 8, 9, 9, 9, 10, 11, 14, 14, 15];
+
+    // Assume canvas dimensions are 400x400
+    const canvasWidth = canvas.width;
+    const canvasHeight = canvas.height;
+
+    ctx.fillStyle = "red";
+
+    for (let i = 0; i < xArray.length; i++) {
+      // Scale points to fit the canvas
+      const x = (xArray[i] / 150) * canvasWidth; // Normalize x to [0, 1] and scale
+      const y = canvasHeight - (yArray[i] / 15) * canvasHeight; // Normalize y and invert
+
+      // Draw ellipse at the scaled position
+      ctx.beginPath();
+      ctx.ellipse(x, y, 2, 3, 0, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  </script>
+</body>
+</html>

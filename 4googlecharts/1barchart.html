@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<script src="https://www.gstatic.com/charts/loader.js"></script>
+
+<body>
+<div id="myChart" style="width:100%; max-width:600px; height:500px;"></div>
+
+<script>
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
+
+function drawChart() {
+
+// Set Data
+const data = google.visualization.arrayToDataTable([
+  ['Contry', 'Mhl'],
+  ['Italy',55],
+  ['France',49],
+  ['Spain',44],
+  ['USA',24],
+  ['Argentina',15]
+]);
+
+// Set Options
+const options = {
+  title:'World Wide Wine Production'
+};
+/*
+To display the Pie in 3D, just add is3D: true to the options:
+
+const options = {
+  title: 'World Wide Wine Production',
+  is3D: true
+};
+*/
+
+// Draw
+const chart = new google.visualization.BarChart(document.getElementById('myChart'));
+chart.draw(data, options);
+
+}
+
+/*
+To convert a Bar Chart to a Pie chart, just replace:
+
+google.visualization.BarChart
+
+with:
+
+google.visualization.PieChart
+
+const chart = new google.visualization.PieChart(document.getElementById('myChart'));
+
+*/
+</script>
+
+</body>
+</html>
+
+
+
